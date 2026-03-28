@@ -1,156 +1,86 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wedding Joe & Sarah</title>
+  <button class="btn" onclick="openInvite()">Buka Undangan</button>
+</div>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Great+Vibes&display=swap" rel="stylesheet">
+<div id="content" style="display:none">
 
-<style>
-body {
-  margin:0;
-  font-family: 'Poppins', sans-serif;
-  background:#0d0d0d;
-  color:white;
-  text-align:center;
-  overflow-x:hidden;
-}
-
-/* COVER */
-#cover {
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
-  url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover;
-}
-
-h1 {
-  font-family:'Great Vibes', cursive;
-  font-size:55px;
-  margin:10px 0;
-}
-
-button {
-  padding:12px 28px;
-  border:none;
-  background:gold;
-  color:black;
-  font-weight:bold;
-  border-radius:30px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-button:hover {
-  transform:scale(1.1);
-}
-
-/* CONTENT */
-#content {
-  display:none;
-  padding:30px 20px;
-}
-
-.section {
-  margin:50px 0;
-}
-
-.card {
-  background:#1a1a1a;
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 0 15px rgba(255,215,0,0.2);
-}
-
-/* ANIMATION */
-.fade {
-  animation:fadeIn 1.5s ease;
-}
-
-@keyframes fadeIn {
-  from {opacity:0; transform:translateY(20px);}
-  to {opacity:1; transform:translateY(0);}
-}
-
-/* COUNTDOWN */
-#countdown {
-  font-size:22px;
-  margin-top:10px;
-  color:gold;
-}
-</style>
-
-</head>
-
-<body>
-
-<!-- COVER -->
-<div id="cover">
+<div class="section">
   <h1>Joe & Sarah</h1>
-  <p>Wedding Invitation</p>
-  <button onclick="bukaUndangan()">Buka Undangan</button>
+  <p>Dengan penuh cinta kami mengundang Anda</p>
 </div>
 
-<!-- CONTENT -->
-<div id="content" class="fade">
+<div class="section"><div class="card"><h2>📅 Tanggal</h2><p>20 Desember 2026</p></div></div>
+<div class="section"><div class="card"><h2>⏰ Waktu</h2><p>10:00 WIB</p></div></div>
+<div class="section"><div class="card"><h2>📍 Lokasi</h2><p>Hotel Bahagia, Jakarta</p></div></div>
 
-  <div class="section">
-    <h1>Joe & Sarah</h1>
-    <p>Dengan penuh cinta kami mengundang Anda</p>
-  </div>
+<div class="section">
+  <h2>⏳ Countdown</h2>
+  <div id="countdown"></div>
+</div>
 
-  <div class="section card">
-    <h2>📅 Tanggal</h2>
-    <p>Sabtu, 20 Desember 2026</p>
+<div class="section">
+  <h2>📖 Love Story</h2>
+  <div class="timeline">
+    <div>2019 - Pertama Bertemu</div>
+    <div>2022 - Mulai Serius</div>
+    <div>2026 - Menikah 💍</div>
   </div>
+</div>
 
-  <div class="section card">
-    <h2>⏰ Waktu</h2>
-    <p>10:00 WIB - Selesai</p>
+<div class="section">
+  <h2>📸 Gallery</h2>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc">
+    <img src="https://images.unsplash.com/photo-1504198458649-3128b932f49b">
+    <img src="https://images.unsplash.com/photo-1519741497674-611481863552">
   </div>
+</div>
 
-  <div class="section card">
-    <h2>📍 Lokasi</h2>
-    <p>Hotel Bahagia, Jakarta</p>
+<div class="section">
+  <h2>💌 RSVP</h2>
+  <div class="card">
+    <input placeholder="Nama Anda">
+    <textarea placeholder="Ucapan"></textarea>
+    <button class="btn">Kirim</button>
   </div>
+</div>
 
-  <div class="section card">
-    <h2>⏳ Countdown</h2>
-    <div id="countdown"></div>
-  </div>
+<div class="section">
+  <h2>🎁 Amplop Digital</h2>
+  <div class="card">DANA / QRIS: 08123456789</div>
+</div>
 
-  <div class="section">
-    <h2>💖 Doa & Restu</h2>
-    <p>Merupakan suatu kehormatan bagi kami apabila Anda berkenan hadir.</p>
-  </div>
+<div class="footer">© Wedding Joe & Sarah</div>
 
 </div>
+
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
 
 <script>
-function bukaUndangan() {
-  document.getElementById("cover").style.display = "none";
-  document.getElementById("content").style.display = "block";
+function openInvite(){
+ document.querySelector('.hero').style.display='none';
+ document.getElementById('content').style.display='block';
+ document.getElementById('music').play();
 }
 
-/* COUNTDOWN */
-var targetDate = new Date("Dec 20, 2026 10:00:00").getTime();
+function toggleMusic(){
+ var m=document.getElementById('music');
+ if(m.paused){m.play()}else{m.pause()}
+}
 
-var x = setInterval(function() {
-  var now = new Date().getTime();
-  var distance = targetDate - now;
-
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  var minutes = Math.floor((distance / 1000 / 60) % 60);
-
-  document.getElementById("countdown").innerHTML =
-    days + " Hari " + hours + " Jam " + minutes + " Menit";
-
-}, 1000);
+var targetDate=new Date("Dec 20, 2026 10:00:00").getTime();
+setInterval(function(){
+ var now=new Date().getTime();
+ var d=targetDate-now;
+ var days=Math.floor(d/(1000*60*60*24));
+ var hours=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+ var minutes=Math.floor((d%(1000*60*60))/(1000*60));
+ document.getElementById("countdown").innerHTML=days+" Hari "+hours+" Jam "+minutes+" Menit";
+},1000);
 </script>
 
 </body>
